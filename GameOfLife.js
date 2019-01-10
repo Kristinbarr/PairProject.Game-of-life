@@ -10,8 +10,18 @@ class GameOfLife {
    */
 
   makeBoard() {
+    let board = [];
+    for (let i = 0; i < this.height; i++) {
+      let row = [];
+      for (let j = 0; j < this.width; j++) {
+        row.push(0)
+      }
+      board.push(row)
+    }
+    console.log(board)
+    return board;
     // TODO: Create and return an 2D Array 
-    // with `this.heigh` as rows and `this.width` as cols.
+    // with `this.height` as rows and `this.width` as cols.
     // For example, given a height of 4 and a width of 3, it will generate:
     // [
     //  [0, 0, 0],
@@ -49,3 +59,6 @@ class GameOfLife {
     this.board = newBoard;
   }
 }
+
+let newGame = new GameOfLife(3, 4)
+console.log(newGame.makeBoard())
