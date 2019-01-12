@@ -18,7 +18,6 @@ class GameOfLife {
       }
       board.push(row)
     }
-    console.log(board)
     return board;
     // TODO: Create and return an 2D Array 
     // with `this.height` as rows and `this.width` as cols.
@@ -39,11 +38,9 @@ class GameOfLife {
   }
 
   setCell(value, row, col) {
-    // console.log(this.board[row][col])
     this.board[row][col] = value;
-    // console.log(this.board[row][col])
   }
- 
+
   toggleCell(row, col) {
     if (this.board[row][col] === 0) {
       this.board[row][col] = 1;
@@ -53,18 +50,25 @@ class GameOfLife {
     }
   }
 
-
-
-
   /**
    * Return the amount of living neighbors around a given coordinate.
    */
 
   livingNeighbors(row, col) {
+    let totalLiveCount = 0;
+
+    totalLiveCount += this.getCell(row, col-1)
+    totalLiveCount += this.getCell(row, col+1)
+    totalLiveCount += this.getCell(row-1, col)
+    totalLiveCount += this.getCell(row+1, col)
+    totalLiveCount += this.getCell(row+1, col+1)
+    totalLiveCount += this.getCell(row-1, col-1)
+    totalLiveCount += this.getCell(row+1, col-1)
+    totalLiveCount += this.getCell(row-1, col+1)
     
+    return totalLiveCount;
     // TODO: Return the count of living neighbors.
   }
-
 
   /**
    * Given the present board, apply the rules to generate a new board
@@ -81,9 +85,17 @@ class GameOfLife {
     // 1. Count alive neighbors for all cells
     // 2. Set the next state of all cells in newBoard,
     // based on their current alive neighbors
+
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        
+      }
+    }
+
     this.board = newBoard;
   }
 }
 
-let newGame = new GameOfLife(3, 4)
-// console.log(newGame.setCell(1, 1, 2))
+let game = new GameOfLife(3, 4)
+// console.log(game.setCell(1, 1, 2))
+console.log(game)
